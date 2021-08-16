@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Amazon.Lambda.Core;
+using LibGit2Sharp;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
@@ -22,6 +23,9 @@ namespace AWSLambda1
         public string FunctionHandler(object input, ILambdaContext context)
         {
             context.Logger.LogLine($"Arg : [{input}]");
+            
+            var repo = new Repository();
+
             return "OK";
         }
     }
