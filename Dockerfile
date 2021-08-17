@@ -1,8 +1,11 @@
-FROM public.ecr.aws/lambda/dotnet:core3.1
+FROM scratch
 
-# Copy function code
-# COPY publish/* ${LAMBDA_TASK_ROOT}
-COPY AWSLambda1/bin/Debug/netcoreapp3.1/linux-x64/publish/* ${LAMBDA_TASK_ROOT}
+COPY /work/bash/bash /bin/bash
+COPY /work/bash/libtinfo.so.6 /lib64/libtinfo.so.6
+COPY /work/bash/libdl.so.2 /lib64/libdl.so.2
+COPY /work/bash/libc.so.6 /lib64/libc.so.6
+COPY /work/bash/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2
 
-# Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
-CMD [ "AWSLambda1::AWSLambda1.Function::FunctionHandler" ]
+ADD /work/static-curl-7.78.0.tar.gz /usr/bin/curl
+
+CMD ["/bin/bash"]
