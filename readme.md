@@ -3,13 +3,15 @@
 `sln`があるディレクトリで下記コマンドを実行
 
 ```sh
-dotnet publish --framework netcoreapp3.1 --runtime linux-x64
+# dotnet publish --framework netcoreapp3.1 --runtime linux-x64
+dotnet publish --framework netcoreapp3.1 --runtime rhel-x64
 ```
 
 `Dockerfile`記載後、このディレクトリで下記コマンドを実行
 
 ```sh
 docker build -t mylambda .
+docker build -t mylambda -f Dockerfile.default .
 ```
 
 ```sh

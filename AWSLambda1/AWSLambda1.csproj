@@ -10,5 +10,9 @@
   <ItemGroup>
     <PackageReference Include="Amazon.Lambda.Core" Version="1.2.0" />
     <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.1.0" />
+    <PackageReference Include="LibGit2Sharp" Version="0.26.2" />
   </ItemGroup>
+  <!-- <Target Name="GitLib2SharpFix" AfterTargets="Publish">
+    <Exec Command="cp libgit2-6777db8.so bin\Debug\netcoreapp3.1\publish" />
+  </Target> -->
 </Project>

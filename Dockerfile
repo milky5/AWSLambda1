@@ -8,4 +8,4 @@ COPY /work/bash/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2
 
 ADD /work/static-curl-7.78.0.tar.gz /usr/bin/curl
 
-CMD ["/bin/bash"]
+CMD ["/bin/bash echo hoge"]
