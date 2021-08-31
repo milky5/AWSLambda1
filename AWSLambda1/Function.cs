@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,7 +25,26 @@ namespace AWSLambda1
         {
             context.Logger.LogLine($"Arg : [{input}]");
             
-            var repo = new Repository();
+            try
+            {
+                Repository repo = new Repository();
+
+                string path = "https://github.com/milky5/milky5.github.io.git";
+
+                // \\Mac\Home\Documents\test
+                string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "test");
+                Console.WriteLine(folderPath);
+
+                CloneOptions options = new CloneOptions();
+                options.BranchName = "master";
+
+                Repository.Clone(path, folderPath, options);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"error: {ex}");
+                throw;
+            }
 
             return "OK";
         }
