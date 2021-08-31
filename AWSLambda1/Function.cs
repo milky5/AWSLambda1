@@ -27,13 +27,14 @@ namespace AWSLambda1
             
             try
             {
+                Directory.SetCurrentDirectory("/tmp");
+                Console.WriteLine(Directory.GetCurrentDirectory());
+
                 Repository repo = new Repository();
 
                 string path = "https://github.com/milky5/milky5.github.io.git";
 
-                // \\Mac\Home\Documents\test
-                string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "test");
-                Console.WriteLine(folderPath);
+                string folderPath = DateTime.Now.ToString("hhmmss");
 
                 CloneOptions options = new CloneOptions();
                 options.BranchName = "master";
